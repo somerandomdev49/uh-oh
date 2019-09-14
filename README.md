@@ -37,4 +37,4 @@ greet("this will not work", endings.happy); // error: greet is undefined!
 ```
 
 As you can see, `uh-oh` makes it possible to use some functions
-or variables inside only some specific function. :D nice! uh oh!
+or variables inside only some specific function. :D nice! uh oh! i like it :D
