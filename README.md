@@ -11,16 +11,20 @@ const uh = require("uh") // for node.js
 
 const example = uh.performer({
   greet: ($, name, ending) => {
-    console.log($.variable + " " + name + $.variableVersionTwoPointZero)
+    console.log($.defaultGreeting + " " + name==null?$.noName + ending==null?$.endings.default:ending);
   },
+  setDefaultEnding: ($, e) => { $.endings.default = e; return e; },
+  setDefaultGreeting: ($, g) => { $.defaultGreeting = g; return g; },
+  
   endings: {
-    greeting: "Hello",
     happy: "!",
     question: "?",
     polite: "."
-    no: ""
+    no: "",
+    default: null;
   },
-  noName: "<no-name>"
+  noName: "<no-name>",
+  defaultGreeting: "Hello,"
 });
 ```
 
@@ -28,8 +32,11 @@ const example = uh.performer({
 ```js
 const lib = require("library");
 lib.example(() => {
-  greet("uh... What was your name again", endings.question); // -> Hello uh... What was your name again?
-  greet(noName, endings.polite); // -> Hello <no-name>.
+  greet("uh... What was your name again", endings.question); // -> Hello, uh... What was your name again?
+  setDefaultGreeting("hi");
+  greet(null, endings.polite); // -> hi <no-name>.
+  setDefaultEnding(endings.happy);
+  greet("uh-oh", null); // -> hi uh-oh!
   // this is available here!
 });
 
