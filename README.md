@@ -2,7 +2,7 @@
 
 Little thing that may help you make your framework.
 
-# Usage:
+# Example:
 
 ### `library.js` :
 ```js
