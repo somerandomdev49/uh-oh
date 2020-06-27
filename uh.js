@@ -1,4 +1,4 @@
-performer_ = s => f => (...a) =>
+const performer = s => f => (...a) =>
 	new Function(
 		...Object.keys(s),
 		`(${f})(${a.join()})`
